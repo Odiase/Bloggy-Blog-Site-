@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href=" {% static 'styles/sign-up.css' %} ">
+    {%endblock styles%}
+    {%block title%}
+    <title>Bloggy | Create Your Blog Profile</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <section class="form-wrapper" id="form-wrapper">
+        <h1 class="auth-btn" style="text-align: center;">Create Your Blog Profile Profile</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+                <div class="profile-form-container">
+                    {{form.about}}
+                </div>
+                <div class="profile-form-container">
+                    {{form.image}}
+                </div>
+            <button type="submit" style="padding: 8px 12px;background-color: #0a640a; color: white;">Create</button>
+        </form>
+    </section>
+    {%endblock content%}
+</body>
+</html>

@@ -1,0 +1,106 @@
+.light-text {
+  color: #b4b4b4;
+  font-weight: light;
+}
+
+.intro-info {
+  width: 100%;
+  padding: 10px;
+  padding-left: 30px;
+}
+
+.profile-img-section {
+  width: 100%;
+  height: 200px;
+  background: #dbcfdb;
+  position: relative;
+}
+
+.profile-img-section img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: -50px;
+  left: 20px;
+  border-radius: 50%;
+}
+
+.user-account-info {
+  margin-top: 60px;
+  padding: 8px;
+}
+
+.user-account-info > div:first-child {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.user-account-info > div:first-child button {
+  background: #0a640a;
+  padding: 8px 15px;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.user-account-info > div:first-child button:hover {
+  background: #0ac80a;
+}
+
+.user-account-info .about-user {
+  margin-top: 10px;
+}
+
+.user-account-info .user-follow-info {
+  margin-top: 20px;
+}
+
+.user-account-info .user-follow-info a {
+  margin-right: 20px;
+}
+
+.user-account-info .user-follow-info a span {
+  font-weight: bolder;
+}
+
+.user-blogs-wrappper {
+  margin-top: 40px;
+}
+
+.user-blogs-wrappper h3:first-child {
+  display: inline-block;
+  margin-left: 25px;
+  padding: 7px 10px;
+  font-size: 1.3rem;
+}
+
+.user-blogs-wrappper h3:first-child::after {
+  content: "";
+  width: 100%;
+  display: block;
+  margin-top: 8px;
+  height: 3px;
+  background: #0a640a;
+}
+
+#see-more {
+  display: inline-block;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding: 8px;
+  border: 1px solid white;
+}
+
+#see-more:hover {
+  border-color: #0a640a;
+}
+/*# sourceMappingURL=profile.css.map */

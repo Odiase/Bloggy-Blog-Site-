@@ -1,0 +1,93 @@
+{%extends "base.html" %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'styles/blog.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/profile.css'%}">
+    {%endblock styles%}
+    {%block title%}
+    <title>Bloggy | {{profile.user.last_name}} {{profile.user.first_name}}</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <main>
+        <section class="intro-info">
+            <h4>{{profile.user.last_name}} {{profile.user.first_name}}</h4>
+            <p class = "light-text">{{lob}} Blog Posts</p>
+        </section>
+
+        <div class="profile-img-section">
+            <img src="{{profile.image.url}}" alt="{{profile.user.username}} profile pic">
+        </div>
+
+        <section class="user-account-info">
+            <div class="">
+                <h2>{{profile.user.last_name}} {{profile.user.first_name}}</h2>
+                <form action=" {% url 'subscribe' profile.user.id %} " method="post">
+                    {%csrf_token%}
+                    {%if profile.user != user%}
+                        {%if is_a_follower%}
+                            <button style="background-color: rgb(70,70,70);">Subscribed</button>
+                        {%else%}
+                            <button type="submit">Subscribe +</button>
+                        {%endif%}
+                    {%else%}
+                    <button><a href=" {%url 'update-profile' %} ">Edit Profile</a></button>
+                    {%endif%}
+                </form>
+            </div>
+            <p class="light-text">200 Followers</p>
+            <div class="about-user">
+                <p>{{profile.about|linebreaksbr}}</p>
+            </div>
+            <div class="user-follow-info">
+                <a href=""> <span>{{subscribed_to}}</span> Subscribed To</a>
+                <a href=""> <span>{{subscribers}}</span> Subscribers</a>
+                <a href=""> <span>{{lob}}</span> Blog(s)</a>
+            </div>
+        </section>
+        
+        <div class="user-blogs-wrappper">
+            <h3>Blogs</h3>
+            <div class="blogs-wrapper">
+                {%for blog in blogs%}
+                <div class="blog">
+                    {%if blog.featured_image%}
+                    <div class="img-container">
+                        <img src="{{blog.featured_image.url}}" alt="">
+                    </div>
+                    {%endif%}
+                    <div class="blog-body">
+                        <div class="blog-info">
+                            {%if blog.user.my_profile%}
+                                <div class="user" style="display: flex;align-items: center;">
+                                    <img src="{{blog.user.my_profile.image.url}}" alt="" width="40" height="40" style="border-radius: 50%;margin-right: 5px;">
+                                    <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                                </div>
+                            {%else%}
+                                <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                            {%endif%}
+                            <br>
+                            <h3 class = "blog-title">{{blog.title}}</h3>
+                            <br>
+                            <p>Created: {{blog.created}}</p>
+                        </div>
+                        <a href=" {% url 'single-blog' blog.slug blog.id %} ">See More</a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+            {% if lob > 3 %}           
+            <a href="{%url 'profile-blogs' profile.user.id %}" id = "see-more">See All</a>
+            {%endif%}
+        </div>
+    </main>
+    {%endblock content%}
+</body>
+</html>

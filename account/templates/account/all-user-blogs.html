@@ -1,0 +1,78 @@
+{%extends 'base.html' %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'styles/blog.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/profile.css'%}">
+    {%endblock styles%}
+    {%block title%}
+    <title>Bloggy | {{profile_user.last_name}} {{profile_user.first_name}} Blogs</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <main>
+        <section class="intro-info">
+            <h4>{{profile_user.last_name}} {{profile_user.first_name}}</h4>
+            <p class = "light-text">{{lob}} Blog Posts</p>
+        </section>
+
+        <!-- all user's blogs -->
+        <div class="user-blogs-wrappper">
+            <h3>Blogs</h3>
+            <div class="blogs-wrapper">
+                {%for blog in page%}
+                <div class="blog hide-vertical">
+                    {%if blog.featured_image%}
+                    <div class="img-container">
+                        <img src="{{blog.featured_image.url}}" alt="">
+                    </div>
+                    {%endif%}
+                    <div class="blog-body">
+                        <div class="blog-info">
+                            {%if blog.user.my_profile%}
+                                <div class="user" style="display: flex;align-items: center;">
+                                    <img src="{{blog.user.my_profile.image.url}}" alt="" width="40" height="40" style="border-radius: 50%;margin-right: 5px;">
+                                    <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                                </div>
+                            {%else%}
+                                <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                            {%endif%}
+                            <br>
+                            <h3 class = "blog-title">{{blog.title}}</h3>
+                            <br>
+                            <p>Created: {{blog.created}}</p>
+                        </div>
+                        <a href=" {% url 'single-blog' blog.slug blog.id %} ">See More</a>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="pagination">
+            {% if page.has_previous %}
+            <span>
+                <a href="?page=1">&laquo; 1</a>
+            </span>
+            <span>
+                <a href="?page={{ page.previous_page_number }}">Prev</a>
+            </span>
+            {% endif %}
+            {% if page.has_next %}
+            <span>
+                <a href="?page={{ page.next_page_number }}">next</a>
+            </span>
+            <span>
+                <a href="?page={{ page.paginator.num_pages }}">last &raquo;</a>
+            </span>
+        {% endif %}
+        </div>
+    </main>
+    {%endblock content%}
+</body>
+</html>
