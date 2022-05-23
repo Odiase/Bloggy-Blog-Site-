@@ -1,0 +1,48 @@
+{%extends 'base.html' %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'styles/sign-up.css'%}">
+    {%endblock styles%}
+    {%block scripts%}
+    <script src="{% static 'scripts/auth.js'%}" defer></script>
+    {%endblock scripts%}
+    {%block title%}
+    <title>Bloggy | Login</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block header%}
+    {%endblock header%}
+    {%block content%}
+    <div class="body">
+        <section class="form-wrapper" id="form-wrapper">
+            <h2 class="auth-header" style="text-align: center;">Login To Your Account</h2>
+            {%for message in messages%}
+                <p style="color: rgb(172, 20, 20);"><b>{{message}}</b></p>
+            {%endfor%}
+            <form action="" class="hide" id="form" method="POST">
+                {%csrf_token%}
+                <div class="">
+                    <label for="username">Username</label>
+                    <input type="text" name = "username" id="username" required>
+                </div>
+                <div class="">
+                    <label for="pasword">Password</label>
+                    <input type="password" name = "password" id="password" required>
+                </div>
+                <button type="submit" class="button">Login</button>
+                <br>
+            </form>
+            <p>Don't Have An Account? <b><a href=" {%url 'sign-up'%}  ">Create One</a></b></p>
+            <p><b><a href="">Forgot Password?</a></b></p>
+        </section>
+    </div>
+    {%endblock content%}
+</body>
+</html>

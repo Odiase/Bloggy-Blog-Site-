@@ -1,0 +1,65 @@
+{%extends 'base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'styles/blog.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/home.css'%}">
+    {%endblock styles%}
+    {%block title%}
+    <title>Welcome To Bloggy | Your Favourite Blog Platform</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <header>
+        <div class="header-text">
+            <div class="inner-header-text">
+                <h1 class="hide-vertical"><span>A</span> <span>Platform</span>  <span>For</span> <span>Content</span> <span>Creators</span></h1>
+                <p>Write and customize compelling articles on Bloggy, <br> With Amazing Toolkits At Your Disposal</p>
+                <button class="get-started-btn hide-horizontal"><a href="#recent-blogs">Get Started</a></button>
+            </div>
+        </div>
+    </header>
+    <!-- Recent Blogs Section Starts -->
+
+    <section class="recent-blogs" id="recent-blogs">
+        <h2>Recent <span>Blogs</span></h2>
+        <div class="blogs-wrapper">
+            {%for blog in recent_blogs%}
+            <div class="blog">
+                {%if blog.featured_image%}
+                <div class="img-container">
+                    <img src="{{blog.featured_image.url}}" alt="">
+                </div>
+                {%endif%}
+                <div class="blog-body">
+                    <div class="blog-info">
+                        {%if blog.user.my_profile%}
+                            <div class="user" style="display: flex;align-items: center;">
+                                <img src="{{blog.user.my_profile.image.url}}" alt="" width="40" height="40" style="border-radius: 50%;margin-right: 5px;">
+                                <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                            </div>
+                        {%else%}
+                            <h5> <a href="{% url 'account' blog.user.id %}">{{blog.user.last_name}} {{blog.user.first_name}}</a> </h5>
+                        {%endif%}
+                        <br>
+                        <h3 class = "blog-title">{{blog.title}}</h3>
+                        <br>
+                        <p>Created: {{blog.created}}</p>
+                    </div>
+                    <a href=" {% url 'single-blog' blog.slug blog.id %} ">See More</a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+        <!-- <button><a href="">See All Recent Blogs</a></button> -->
+    </section>
+    <!-- Recent Blogs Section Ends -->
+    {%endblock content%}
+</body>
+</html>

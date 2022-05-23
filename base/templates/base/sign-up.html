@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href="{% static 'styles/sign-up.css'%}">
+    {%endblock styles%}
+    {%block scripts%}
+    <script src="{% static 'scripts/auth.js'%}" defer></script>
+    {%endblock scripts%}
+    {%block title%}
+    <title>Bloggy | Sign Up And Start Your Blogging Journey</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <main class="body">
+        <section class="form-wrapper" id="form-wrapper">
+            <h2 class="auth-header">Sign Up</h2>
+            {%for message in messages%}
+            <p style="color: rgb(172, 20, 20);"><b>{{message}}</b></p>
+            {%endfor%}
+            <form action="" class="hide" id="form" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+                <div class="">
+                    <label for="first-name">First name</label>
+                    <input type="text" name = "first-name" id="first-name" required>
+                </div>
+                <div class="">
+                    <label for="last-name">Last name</label>
+                    <input type="text" name = "last-name" id="last-name" required>
+                </div>
+                <div class="">
+                    <label for="username">Username</label>
+                    <input type="text" name = "username" id="username" required>
+                </div>
+                <div class="">
+                    <label for="email">Email</label>
+                    <input type="email" name = "email" id="email" required>
+                </div>
+                <div class="">
+                    <label for="password1">Password</label>
+                    <input type="password" name = "password1" id="password1"required >
+                </div>
+                <div class="">
+                    <label for="password2">Re-enter Your Password</label>
+                    <input type="password" name = "password2" id="password2" required>
+                </div>
+                <button type="submit" class="button">Create Account</button>
+            </form>
+            <p>Already Have An Account? <b><a href="{% url 'login' %} ">Login</a></b></p>
+        </section>
+    </main>
+    {%endblock content%}
+</body>
+</html>
