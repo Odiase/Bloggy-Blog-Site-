@@ -1,0 +1,60 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'styles/general.css'%}">
+    <link rel="stylesheet" href="{% static 'styles/navbar.css'%}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Macondo+Swash+Caps&family=Nunito:ital,wght@0,400;0,500;0,700;1,200&display=swap" rel="stylesheet">
+    {%block styles%}
+    {%endblock styles%}
+    <!-- custom scripts -->
+    <script src="{% static 'scripts/home.js'%}" defer></script>
+    {%block scripts%}
+    {%endblock scripts%}
+    {%block title%}
+    <title></title>
+    {%endblock title%}
+</head>
+<body>
+    <!--  header sections starts -->
+    <div class="search-wrapper" id="search-wrapper">
+        <form action="{%  url 'search-blog' %}" method="get">
+            <h4 id="close-search-field-btn">Close</h4>
+            <input type="search" name="search-input" id="search-bar" placeholder="Search For Blogs, According To The 'creator' or 'Category'">
+        </form>
+    </div>
+        <nav id="navigation-tag">
+            <h1 class="tmp-blog-icon"><a href=" {%url 'home' %} ">Bloggy</a></h1>
+            <h3 id="mobile-menu-btn">MENU</h3>
+            <ul class="mobile-menu">
+                <li class="nav-links"><a href=" {%url 'create-blog' %} ">Create A Blog</a></li>
+                {%if user.is_authenticated%}
+                    {%if user.my_profile%}
+                    <li class="nav-links"><a href=" {%url 'account'   user.id %} ">My Profile</a></li>
+                    {%else%}
+                    <li class="nav-links"><a href=" {%url 'create-profile'%} ">Create A Blog Profile</a></li>
+                    {%endif%}
+
+                    <li class="nav-links auth-btn"><a href="{% url 'logout' %}">Logout</a></li>
+
+                {%else%}
+                    <li class="nav-links auth-btn"><a href="{% url 'sign-up' %}">Create An Account</a></li>
+                    <li class="nav-links auth-btn"><a href="{% url 'login' %}">Login</a></li>
+                {%endif%}
+                <li class="nav-links" id="search-wrapper-btn">Search</li>
+            </ul>
+        </nav>
+        <div class="div"></div>
+    <!--  header section ends -->
+        {%block content%}
+    
+
+
+    {%endblock content%}
+    <!-- Footer Section Starts  -->
+    <footer>
+        <h4 style="text-align: center;width: 100%;">Created With Love By Odiase EFosa</h4>
+    </footer>
