@@ -1,0 +1,235 @@
+ a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  #mobile-menu-btn {
+    cursor: pointer;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+  }
+  
+  h2::after {
+    content: '';
+    display: block;
+    width: 10%;
+    height: 2px;
+    margin: 10px auto;
+    background: #0a640a;
+  }
+  
+  h2 span {
+    color: #0a640a;
+  }
+  
+  .search-wrapper {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.8);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .search-wrapper h4 {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: .8;
+    font-weight: normal;
+  }
+  
+  .search-wrapper h4:hover {
+    opacity: 1;
+  }
+  
+  .search-wrapper form {
+    width: 90%;
+    margin: auto;
+  }
+  
+  .search-wrapper form input {
+    display: block;
+    width: 90%;
+    margin: auto;
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #0ac80a;
+    color: white;
+  }
+  
+  .search-wrapper form input::-webkit-input-placeholder {
+    font-size: 1.5rem;
+  }
+  
+  .search-wrapper form input:-ms-input-placeholder {
+    font-size: 1.5rem;
+  }
+  
+  .search-wrapper form input::-ms-input-placeholder {
+    font-size: 1.5rem;
+  }
+  
+  .search-wrapper form input::placeholder {
+    font-size: 1.5rem;
+  }
+  
+  .search-wrapper form input:focus {
+    background: transparent;
+  }
+  
+  #search-wrapper-btn {
+    display: inline-block;
+    background: #0ac80a;;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  #search-wrapper-btn:hover {
+    background: #0ac80a;
+  }
+  
+  @media screen and (min-width: 800px) {
+    .search-wrapper form input {
+      width: 80%;
+    }
+  }
+  
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #0a640a;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 1.5em;
+    z-index: 9999;
+    -webkit-box-shadow: 3px 3px 10px black;
+            box-shadow: 3px 3px 10px black;
+  }
+  .div{
+    margin-bottom: 100px;
+  }
+  
+ nav ul {
+    position: absolute;
+    right: 0;
+    top: 5em; 
+    background: inherit;
+    width: 0%;
+    height: 100vh;
+    text-align: left;
+  }
+  
+ nav ul li {
+    margin: 20px 0;
+    margin-left: 10%;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(10, 200, 10, 0.3);
+    padding-bottom: 5px;
+    cursor: pointer;
+  }
+  
+  
+
+ 
+  
+  @media screen and (min-width: 800px) {
+    #mobile-menu-btn {
+      display: none;
+    }
+    nav ul {
+      position: relative;
+      height: auto;
+      top: auto;
+      right: 0;
+      width: 65%;
+      text-align: center;
+    }
+    nav ul li {
+      display: inline-block;
+      margin: auto 12px;
+      border-bottom: none;
+      height: 35px;
+    }
+    nav ul li a::after {
+      content: '';
+      display: block;
+      width: 0%;
+      height: 2px;
+      background: white;
+      margin: 10px auto;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+  }
+  
+  footer {
+    position: relative;
+    bottom: 0;
+    background: #0a640a;
+    width: 100%;
+    height: 70px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  footer ul {
+    padding: 15px;
+  }
+  
+  footer ul li {
+    margin: 8px 0;
+    font-weight: bold;
+  }
+  
+  footer ul li a:hover {
+    color: #0ac80a;
+  }
+  
+  footer .creator {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+  }
+  /*# sourceMappingURL=home.css.map */
