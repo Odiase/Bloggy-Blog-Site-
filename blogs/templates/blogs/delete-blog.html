@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+    <link rel="stylesheet" href=" {% static 'styles/delete-blog.css' %} ">
+    {% endblock styles %}
+    {%block title%}
+    <title>Bloggy | Delete Blog</title>
+    {%endblock title%}
+</head>
+<body>
+    {% block content %}
+    <div class="delete-blog-container">
+        <h1>Are You Sure You Want To Delete This Blog</h1>
+        <br>
+        <p>TITLE:&nbsp;  "{{blog.title}}"</p>
+        <form action="" method="post">
+            {%csrf_token%}
+            <p><a href=" {%url 'single-blog' blog.slug blog.id %} ">Go Back</a></p>
+            <button type="submit">Yes I Am Sure</button>
+        </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>

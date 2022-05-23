@@ -1,0 +1,35 @@
+{%extends 'base.html' %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block styles%}
+    <link rel="stylesheet" href=" {% static 'styles/sign-up.css' %} ">
+    <link rel="stylesheet" href=" {% static 'styles/blog-form.css' %} ">
+    {%endblock styles%}
+    {%block title%}
+    <title>Bloggy | Create Your Blog</title>
+    {%endblock title%}
+</head>
+<body>
+    {%block content%}
+    <section class="form-wrapper" id="form-wrapper">
+        <h2 class="auth-btn">Create A Blog</h1>
+        <form action="" method="post" id="form" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form.media}}
+            {%for field in form%}
+            <div class="">
+                <label for="">{{field.name}}</label>
+                {{field}}
+            </div>
+            {%endfor%}
+            <button type="submit">Create</button>
+        </form>
+    </section>
+    {%endblock content%}
+</body>
+</html>

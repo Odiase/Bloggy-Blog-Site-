@@ -1,0 +1,42 @@
+a{
+    color: white;
+}
+h2{
+    text-align: center;
+    width: 100%;
+}
+form{
+    width: 100%;
+}
+textarea{
+    width: 100%;
+    overflow: hidden;
+}
+input{
+    margin-top: 0;
+}
+label{
+    text-transform: uppercase;
+}
+.django-ckeditor-widget{
+    width: 100%;
+    overflow: auto;
+}
+
+.form-wrapper{
+    max-width: 1000px;
+    width: 85%;
+}
+button{
+    padding: 10px 14px;
+    border-radius: 7px;
+    background-color:#0a640a ;
+    color: white;
+    font-weight: bold;
+}
+
+@media (min-width:800px){
+    .form-wrapper{
+        width: 70%;
+    }
+}

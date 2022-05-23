@@ -1,0 +1,37 @@
+body{
+    width: 100%;
+    height: calc(100vh - 120px);
+}
+.delete-blog-container{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+form{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    font-weight: bolder;
+}
+p:hover{
+    text-decoration: underline;
+}
+button{
+    margin-left: 20px;
+    padding: 8px 12px;
+    background-color: darkred;
+    color: white;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: red;
+    cursor: pointer;
+}
